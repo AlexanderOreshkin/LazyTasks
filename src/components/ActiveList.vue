@@ -162,6 +162,7 @@ function canPostpone(task) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     margin-top: 4px;
   }
@@ -172,6 +173,7 @@ function canPostpone(task) {
   color: var(--ink-soft);
   max-width: 12ch;
   line-height: 1.35;
+  text-align: center;
 }
 
 .btn--sm {
