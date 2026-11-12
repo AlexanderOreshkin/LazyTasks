@@ -93,6 +93,21 @@ button {
 .sticker--tilt-l { transform: rotate(-1.4deg); }
 .sticker--tilt-r { transform: rotate(1.2deg); }
 
+// Бейдж сложности дела (общий для списков и оверлея выдачи)
+.chip {
+  align-self: flex-start;
+  padding: 3px 12px;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+
+  &--easy { background: var(--sage); color: var(--cream); }
+  &--medium { background: #ffd98e; color: var(--ink); }
+  &--hard { background: var(--brick); color: var(--cream); }
+}
+
 // ─── Кнопки ────────────────────────────────────────────────
 .btn {
   display: inline-flex;
