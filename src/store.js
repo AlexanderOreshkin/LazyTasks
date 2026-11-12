@@ -35,7 +35,7 @@ function load() {
   } catch (e) {
     /* битые данные — начинаем заново */
   }
-  return { tasks: [], doneTotal: 0 }
+  return { tasks: [], doneTotal: 0, refused: {} }
 }
 
 const saved = load()
@@ -43,6 +43,8 @@ const saved = load()
 export const store = reactive({
   tasks: saved.tasks,
   doneTotal: saved.doneTotal || 0,
+  // taskId -> timestamp, до которого дело исключено из выдачи (кулдаун после отказа)
+  refused: saved.refused || {},
   ui: {
     tab: 'bag',
     toast: null,
@@ -50,7 +52,7 @@ export const store = reactive({
 })
 
 watch(
-  () => ({ tasks: store.tasks, doneTotal: store.doneTotal }),
+  () => ({ tasks: store.tasks, doneTotal: store.doneTotal, refused: store.refused }),
   (v) => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(v))
@@ -60,6 +62,27 @@ watch(
   },
   { deep: true }
 )
+
+function endOfToday() {
+  const d = new Date()
+  d.setHours(23, 59, 59, 999)
+  return d.getTime()
+}
+
+function isRefused(task) {
+  const until = store.refused[task.id]
+  if (!until) return false
+  if (until < Date.now()) {
+    delete store.refused[task.id]
+    return false
+  }
+  return true
+}
+
+/** Отказ от дела: одноразовый — до конца дня дело не попадётся в выдаче снова. */
+export function refuseTask(id) {
+  store.refused[id] = endOfToday()
+}
 
 let idSeq = Date.now()
 
@@ -80,6 +103,7 @@ export function addTask(title, difficulty) {
 export function removeTask(id) {
   const i = store.tasks.findIndex((t) => t.id === id)
   if (i >= 0) store.tasks.splice(i, 1)
+  delete store.refused[id]
 }
 
 export const inProgress = computed(() =>
@@ -105,9 +129,9 @@ export function pullBlockReason() {
   return null
 }
 
-/** Доступные дела под текущее настроение. */
+/** Доступные дела под текущее настроение (без отказавшихся сегодня). */
 export function poolForMood(mood) {
-  const bag = bagTasks.value
+  const bag = bagTasks.value.filter((t) => !isRefused(t))
   if (mood === 'light') return bag.filter((t) => t.difficulty === 'easy')
   return bag.filter((t) => t.difficulty === 'medium' || t.difficulty === 'hard')
 }

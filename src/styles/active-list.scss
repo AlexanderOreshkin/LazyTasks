@@ -1,0 +1,128 @@
+// Список дел в работе и форма переноса
+.active-note {
+  max-width: 62ch;
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin: 0 0 22px;
+}
+
+.active-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.active-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &--paused {
+    opacity: 0.85;
+    background: var(--paper-deep);
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__title {
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  &__comment {
+    font-size: 14px;
+    color: var(--ink-soft);
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+  }
+}
+
+.no-postpone {
+  font-size: 13px;
+  color: var(--ink-soft);
+  max-width: 12ch;
+  line-height: 1.35;
+}
+
+.btn--sm {
+  min-height: 44px;
+  padding: 8px 18px;
+  font-size: 15px;
+}
+
+.paused-mark {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+
+.postpone-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  label {
+    font-weight: 800;
+    font-size: 14px;
+  }
+
+  input {
+    min-height: 48px;
+    padding: 10px 14px;
+    border: var(--stroke) solid var(--line);
+    border-radius: 12px;
+    background: var(--paper);
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--ink);
+  }
+
+  &__error {
+    color: var(--brick);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  &__row {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.active-empty {
+  padding: 40px 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 480px;
+  margin: 30px auto;
+
+  h3 {
+    font-size: 26px;
+  }
+
+  p {
+    color: var(--ink-soft);
+    max-width: 34ch;
+  }
+}
