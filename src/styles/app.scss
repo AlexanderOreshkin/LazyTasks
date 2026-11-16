@@ -168,10 +168,10 @@
   opacity: 0.9;
   pointer-events: none;
 
-  &--1 { top: 16%; right: 4%; transform: rotate(14deg); }
-  &--2 { top: 42%; left: 2.5%; transform: rotate(-10deg); }
+  &--1 { top: 17%; right: 4%; transform: rotate(14deg); }
+  &--2 { top: 37%; left: 2.5%; transform: rotate(-10deg); }
   &--3 { bottom: 14%; right: 7%; transform: rotate(6deg); }
-  &--4 { top: 8%; left: 38%; transform: rotate(-4deg); opacity: 0.7; }
+  &--4 { top: 12%; left: 38%; transform: rotate(-4deg); opacity: 0.7; }
 }
 
 @media (max-width: 900px) {

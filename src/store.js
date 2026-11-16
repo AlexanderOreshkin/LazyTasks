@@ -79,7 +79,6 @@ function isRefused(task) {
   return true
 }
 
-/** Отказ от дела: одноразовый — до конца дня дело не попадётся в выдаче снова. */
 export function refuseTask(id) {
   store.refused[id] = endOfToday()
 }
@@ -116,7 +115,6 @@ function activeOnly() {
   return store.tasks.filter((t) => t.status === 'active')
 }
 
-/** Почему нельзя вытащить новое дело — null, если можно. */
 export function pullBlockReason() {
   const prog = inProgress.value
   if (prog.length >= MAX_ACTIVE) {
@@ -128,8 +126,6 @@ export function pullBlockReason() {
   }
   return null
 }
-
-/** Доступные дела под текущее настроение (без отказавшихся сегодня). */
 export function poolForMood(mood) {
   const bag = bagTasks.value.filter((t) => !isRefused(t))
   if (mood === 'light') return bag.filter((t) => t.difficulty === 'easy')
