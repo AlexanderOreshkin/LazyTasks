@@ -1,5 +1,5 @@
 <script setup>
-import { DIFFICULTY, bagTasks, removeTask, toast } from '../store'
+import { DIFFICULTY, bagTasks, removeTask, toast, isRefusedNow } from '../store'
 import Doodles from './Doodles.vue'
 
 const diffMeta = DIFFICULTY
@@ -17,7 +17,10 @@ function onRemove(task) {
         v-for="(task, i) in bagTasks"
         :key="task.id"
         class="task-card sticker"
-        :class="i % 2 ? 'sticker--tilt-r' : 'sticker--tilt-l'"
+        :class="[
+          i % 2 ? 'sticker--tilt-r' : 'sticker--tilt-l',
+          { 'task-card--refused': isRefusedNow(task.id) },
+        ]"
       >
         <div class="task-card__main">
           <span class="chip" :class="`chip--${task.difficulty}`">
@@ -26,6 +29,9 @@ function onRemove(task) {
           <h3 class="task-card__title">{{ task.title }}</h3>
           <p v-if="task.comment" class="task-card__comment">
             Отложено, потому что: {{ task.comment }}
+          </p>
+          <p v-if="isRefusedNow(task.id)" class="task-card__refused">
+            Отказался сегодня — мешок обиделся и до завтра не покажет это дело.
           </p>
         </div>
         <button

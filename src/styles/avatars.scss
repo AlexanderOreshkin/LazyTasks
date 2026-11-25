@@ -1,0 +1,51 @@
+// Сетка выбора аватарки-животного (регистрация и профиль)
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.avatar-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 6px 8px;
+  min-height: 44px;
+  border: var(--stroke) solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 0 var(--line);
+    background: var(--cream);
+  }
+
+  &__name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  &--on {
+    background: var(--cream);
+    box-shadow: 0 3px 0 var(--line);
+    transform: translateY(-2px);
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+
+    .avatar-option__name {
+      color: var(--ink);
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .avatar-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

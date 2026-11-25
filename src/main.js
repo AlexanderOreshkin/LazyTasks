@@ -6,5 +6,10 @@ import './styles/add-task-form.scss'
 import './styles/bag-list.scss'
 import './styles/active-list.scss'
 import './styles/draw-overlay.scss'
+import './styles/avatars.scss'
+import './styles/onboarding.scss'
+import './styles/register.scss'
+import './styles/profile.scss'
+import './styles/modals.scss'
 
 createApp(App).mount('#app')

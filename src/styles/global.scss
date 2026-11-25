@@ -172,6 +172,21 @@ button {
   }
 }
 
+.btn--xs {
+  min-height: 36px;
+  padding: 4px 12px;
+  font-size: 13px;
+}
+
+.btn--danger {
+  background: var(--brick);
+  color: var(--cream);
+
+  &:hover {
+    background: #8f3008;
+  }
+}
+
 .btn--danger-ghost {
   background: transparent;
   box-shadow: none;

@@ -1,0 +1,101 @@
+// Окно «Сделано» и «Приёмы против лени»
+
+.done {
+  text-align: center;
+  align-items: center;
+  gap: 12px;
+
+  &__title {
+    font-size: 34px;
+  }
+
+  &__task {
+    font-weight: 700;
+    font-size: 18px;
+    overflow-wrap: anywhere;
+  }
+
+  &__praise {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  &__quote {
+    margin: 6px 0 0;
+    padding: 14px 18px;
+    border: 2px dashed var(--paper-deep);
+    border-radius: 14px;
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.55;
+    max-width: 42ch;
+  }
+
+  &__stats {
+    color: var(--ink-soft);
+    font-size: 14px;
+
+    strong {
+      color: var(--ink);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+}
+
+.techniques {
+  gap: 10px;
+
+  h2 {
+    text-align: center;
+  }
+
+  &__sub {
+    text-align: center;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin: 0 auto;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 10px 0 6px;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    border: 2px solid var(--paper-deep);
+    border-radius: 14px;
+    background: var(--cream);
+
+    svg {
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+
+    h3 {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    p {
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+}
