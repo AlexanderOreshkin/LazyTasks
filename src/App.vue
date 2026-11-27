@@ -101,7 +101,7 @@ function clearAll() {
 
   <header class="site-header">
     <div class="site-header__brand">
-      <Doodles name="bag" :size="64" />
+      <Doodles name="bag" :size="128" />
       <div>
         <h1>Ленивые дела</h1>
         <p class="site-header__tagline">Вытащи дело из мешка — и лень сама решит, чем заняться</p>

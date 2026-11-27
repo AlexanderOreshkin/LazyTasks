@@ -178,6 +178,11 @@ button {
   font-size: 13px;
 }
 
+.btn--profile {
+  padding: 0;
+  min-height: 24px;
+}
+
 .btn--danger {
   background: var(--brick);
   color: var(--cream);

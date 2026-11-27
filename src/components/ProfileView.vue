@@ -113,8 +113,8 @@ function cancelDelete() {
         <div class="profile__name-row">
           <template v-if="!nameEditing">
             <h3 class="profile__name">{{ user.name }}</h3>
-            <button type="button" class="btn btn--ghost btn--xs" @click="startRename">
-              переименовать
+            <button type="button" class="btn btn--ghost btn--xs btn--profile" @click="startRename">
+              Переименовать
             </button>
           </template>
           <form v-else class="profile__rename" @submit.prevent="saveRename">
